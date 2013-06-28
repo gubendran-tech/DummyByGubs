@@ -12,30 +12,35 @@ import com.bidding.domainObject.CarInfo;
 @Controller
 public class CarController {
 
-	@RequestMapping(value="/hello", method = RequestMethod.GET)
-	public String printHello(ModelMap model) {
-		model.addAttribute("message", "Hello Spring MVC Framework!");
-		
-		return "hello";
-	}
-	
-	@RequestMapping(value="/carInfo", method = RequestMethod.GET)
-	public ModelAndView carInfo() {
-		return new ModelAndView("carInfo", "command", new CarInfo());
-	}
-	
-	@RequestMapping(value="/addCarInfo", method = RequestMethod.POST)
-	public String addCarInfo(@ModelAttribute("SpringWeb") CarInfo carInfo, ModelMap model) {
-		model.addAttribute("vin", carInfo.getVin());
-		model.addAttribute("year", carInfo.getYear());
-		model.addAttribute("make", carInfo.getMake());
-		model.addAttribute("model", carInfo.getModel());
-		model.addAttribute("mileage", carInfo.getMileage());
-		model.addAttribute("style", carInfo.getStyle());
-		model.addAttribute("engine", carInfo.getEngine());
-		
-		return "result";
-		
-	}
-	
+  @RequestMapping(value = "/hello", method = RequestMethod.GET)
+  public String printHello(ModelMap model) {
+    model.addAttribute("message", "Hello Spring MVC Framework!");
+
+    return "hello";
+  }
+
+  @RequestMapping(value = "/carInfo", method = RequestMethod.GET)
+  public ModelAndView carInfo() {
+    return new ModelAndView("carInfo", "command", new CarInfo());
+  }
+
+  @RequestMapping(value = "/addCarInfo", method = RequestMethod.POST)
+  public String addCarInfo(@ModelAttribute("SpringWeb") CarInfo carInfo, ModelMap model) {
+    model.addAttribute("vin", carInfo.getVin());
+    model.addAttribute("year", carInfo.getYear());
+    model.addAttribute("make", carInfo.getMake());
+    model.addAttribute("model", carInfo.getModel());
+    model.addAttribute("mileage", carInfo.getMileage());
+    model.addAttribute("style", carInfo.getStyle());
+    model.addAttribute("engine", carInfo.getEngine());
+
+    return "result";
+
+  }
+
+  @RequestMapping(value = "/", method = RequestMethod.GET)
+  public String showIndex(ModelMap model) {
+    return "index";
+  }
+
 }
